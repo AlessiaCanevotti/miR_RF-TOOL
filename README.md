@@ -38,8 +38,24 @@ The tool accepts RNAfold output files as input, structured in the following form
 Sample input file structure:
 
 ```plaintext
->pre-miRNA_1
-ACGUAGCUAGCUAGCUAGC...
+>hsa-let-7a-1 MI0000060 Homo sapiens let-7a-1 stem-loop
+UGGGAUGAGGUAGUAGGUUGUAUAGUUUUAGGGUCACACCCACCACUGGGAGAUAACUAUACAAUCUACUGUCUUUCCUA
+(((((.(((((((((((((((((((((.....(((...((((....)))).))))))))))))))))))))))))))))) (-34.20)
+{((((.(((((((((((((((((((((.....(((...((({....}))).))))))))))))))))))))))))))))} [-35.18]
+(((((.(((((((((((((((((((((.....(((...((((....)))).))))))))))))))))))))))))))))) {-34.20 d=3.42}
+ frequency of mfe structure in ensemble 0.203686; ensemble diversity 5.63
+>hsa-let-7a-2 MI0000061 Homo sapiens let-7a-2 stem-loop
+AGGUUGAGGUAGUAGGUUGUAUAGUUUAGAAUUACAUCAAGGGAGAUAACUGUACAGCCUCCUAGCUUUCCU
+(((..(((.(((.(((((((((((((.........(((......)))))))))))))))).))).))).))) (-25.20)
+(((..(((.(((.(((((((((((((.........,,,......,,,))))))))))))).))).))).))) [-26.18]
+(((..(((.(((.(((((((((((((.....................))))))))))))).))).))).))) {-25.00 d=2.70}
+ frequency of mfe structure in ensemble 0.203833; ensemble diversity 4.36
+>hsa-let-7a-3 MI0000062 Homo sapiens let-7a-3 stem-loop
+GGGUGAGGUAGUAGGUUGUAUAGUUUGGGGCUCUGCCCUGCUAUGGGAUAACUAUACAAUCUACUGUCUUUCCU
+(((.(((((((((((((((((((((((((((...)))))).........))))))))))))))))))))).))) (-34.10)
+(((.(((((((((((((((((((((((((((...)))))).........))))))))))))))))))))).))} [-34.81]
+(((.(((((((((((((((((((((((((((...)))))).........))))))))))))))))))))).))) {-34.10 d=2.00}
+ frequency of mfe structure in ensemble 0.314643; ensemble diversity 3.41
 ...
 ```
 
