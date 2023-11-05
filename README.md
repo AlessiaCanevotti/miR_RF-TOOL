@@ -73,14 +73,14 @@ The output file contains pre-miRNA names and their corresponding predictions:
 
    ```bash
    conda env create -f configuration_file.yml
-   
+   ```
     Note: Creating the environment may take some time, as Conda downloads and installs the necessary packages and dependencies.
 
    - After the environment is created, activate it by using the following command:
 
    ```bash
    conda activate miR_RF
-
+   ```
    This step ensures that the appropriate environment, complete with all the necessary channels and packages required to run the miR_RF Tool, is activated. The 
    configuration_file.yml contains a specific set of channel configurations and package installations essential for seamless execution of the tool.
    By following these steps, users will have the correct environment with pre-configured channels and packages, ready to utilize the miR_RF Tool efficiently.
