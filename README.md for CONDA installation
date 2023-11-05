@@ -2,7 +2,7 @@ Instructions for installing Conda via the command line in Linux are provided bel
 
 ---
 
-### Step 1: Download the Installer
+#### Step 1: Download the Installer
 
 1. **Download the Installer Script:**
    Open a web browser and visit the [Anaconda distribution page](https://www.anaconda.com/products/distribution).
