@@ -1,5 +1,5 @@
 # miR_RF-TOOL
-The "miR_RF Tool" repository hosts a machine learning-based application designed to evaluate the authenticity of pre-microRNAs. 
+The "miR_RF-TOOL" repository hosts a machine learning-based application designed to evaluate the authenticity of pre-microRNAs. 
 Certainly! Based on the information you provided, here is a README template for your "miR_RF Tool" explaining the functionality and usage of the tool:
 
 ---
