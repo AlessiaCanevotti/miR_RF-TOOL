@@ -101,5 +101,24 @@ The output file contains pre-miRNA names and their corresponding predictions:
   ```
   If any file is missing, the command will not display it in the directory listing.
 
-4. Execute the program: 
-   
+4. Running the miR_RF Tool:
+   - To utilize the miR_RF Tool for predicting pre-miRNAs, use the following command in the terminal or command line interface:
+
+   ```bash
+   python3 application.py input_file output_file
+   ```
+
+   Replace input_file with the name of the file containing pre-miRNA data in the required format. Similarly, replace output_file with the desired name for the 
+   prediction results file.
+
+   Example Usage:
+
+   ```bash
+   python3 application.py miRNA_input.txt predictions_output.txt
+   ```
+   miRNA_input.txt: Example input file containing pre-miRNA data.
+   predictions_output.txt: Output file to store the prediction results.
+
+   Ensure that the input file follows the specified format (see ### Input requirements section). Upon executing this command, the application.py program will 
+   process the input data, execute feature extraction, and generate predictions using the trained model.
+
