@@ -65,11 +65,18 @@ The output file contains pre-miRNA names and their corresponding predictions:
 
 ### Installation
 
-1. Conda installation in command line (use the provided CONDA installation instruction file)
+1. Conda installation in command line (use the provided CONDA installation instructions file)
 2. Activating the Conda environment --> once Conda is installed, use the provided `configuration_file.yml` file to create an environment suitable for running the miR_RF Tool. In the command line, navigate to the directory containing the `configuration_file.yml` file and type the following command:
 
    ```bash
    conda env create -f configuration_file.yml
+Note: Creating the environment may take some time, as Conda downloads and installs the necessary packages and dependencies.
+
+After the environment is created, activate it by using the following command:
+
+```bash
+   conda activate miR_RF
+
 
    
 
