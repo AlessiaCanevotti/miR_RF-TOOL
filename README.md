@@ -64,8 +64,7 @@ The output file contains pre-miRNA names and their corresponding predictions:
 ```
 
 ### Installation
-1. Conda installation in command line (see how to install Conda in README.md for CONDA installation)
-
+1. Conda installation in command line (see how to install Conda in CONDA installation)
    
 
 ### Contribution Guidelines
