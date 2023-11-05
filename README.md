@@ -20,7 +20,13 @@ The miR_RF Tool is comprised of Python and R scripts:
 
 ### Input Requirements
 The tool accepts RNAfold output files as input, structured in the following format:
-- A file with a header line starting with ">" followed by five subsequent lines for each pre-miRNA.
+- A file with a header line starting with ">" followed by five subsequent lines for each pre-miRNA. 
+For every input string, made by the header line followed by the sequence, the output is composed by four lines corresponding to respectively:
+1. MFE structure, reported within round brackets;
+2. Ensemble structure, with energy reported in square brackets;
+3. Centroid structure, with its energy and the minimal base-pair distance to all the structures in
+the thermodynamic ensemble, reported in curly brackets.
+4. Frequency of MFE structure in ensemble and ensemble diversity
 - Multi-FASTA format is also supported.
 
 ### Usage
