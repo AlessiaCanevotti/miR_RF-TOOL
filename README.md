@@ -61,8 +61,6 @@ The output file contains pre-miRNA names and their corresponding predictions:
 ```plaintext
 "miRNA name"                                               "prediction"
 ">hsa-let-7a-1 MI0000060 Homo sapiens let-7a-1 stem-loop"       "2"
-">hsa-let-7a-2 MI0000061 Homo sapiens let-7a-2 stem-loop"       "2"
-">hsa-let-7a-3 MI0000062 Homo sapiens let-7a-3 stem-loop"       "2"
 ```
 
 ### Installation
