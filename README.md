@@ -33,11 +33,6 @@ the thermodynamic ensemble, reported in curly brackets.
    
 - Multi-FASTA format is also supported.
 
-### Prerequisites
-
-1. Conda
-2. Python
-3. R
 
 ### Input Example
 
