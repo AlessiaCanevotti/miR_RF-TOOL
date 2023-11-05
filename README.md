@@ -32,7 +32,7 @@ the thermodynamic ensemble, reported in curly brackets.
 4. Frequency of MFE structure in ensemble and ensemble diversity
    
 - Multi-FASTA format is also supported.
-
+- The miR_RF Tool accommodates a range of input file formats. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data effectively, irrespective of the file extension. Feel free to use the format that best suits your data. 
 
 ### Input Example
 
@@ -71,8 +71,14 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    - Follow the provided instructions in the 'CONDA installation instructions' file to install Conda on your system.
 
 2. Activating the Conda environment:
-   - Once Conda is installed, use the provided `configuration_file.yml` file to create an environment suitable for running the miR_RF Tool. In the command line, 
-   navigate to the directory containing the `configuration_file.yml` file and type the following command:
+   - Once Conda is installed, use the provided `configuration_file.yml` file to create an environment suitable for running the miR_RF Tool.
+   Download the `configuration_file.yml` file and copy it in the new directory, as follows:
+
+   ```bash
+   ~/Downloads$ cp configuration_file.yml ~/miR_RF_tool
+   ```
+   
+   - In the command line, remain in the directory containing the `configuration_file.yml` file and type the following command:
 
    ```bash
    conda env create -f configuration_file.yml
@@ -88,7 +94,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    configuration_file.yml contains a specific set of channel configurations and package installations essential for the execution of the tool.
    By following these steps, you will have the correct environment with pre-configured channels and packages, ready to utilize the miR_RF Tool efficiently.
 
-3. Setting up the directory:
+2. Setting up the directory:
    - Add in the same directory where it is present the `configuration_file.yml` file, the provided following files:
       - `df_feat_ext.py`: Python script for feature extraction from pre-miRNAs;
       - `make_pred.R`: R script for making predictions using machine learning;
@@ -99,10 +105,10 @@ This command will create a new directory named "miR_RF_Tool" within the current 
   order to check, use the ls command along with the file names. For example:
 
   ```bash
-  cd /path/to/directory/containing/files
-  path/to/directory/containing/files ls configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
+  ~/miR_RF_tool$ ls
+  configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
   ```
-  If any file is missing, the command will not display it in the directory listing.
+  If any file is missing, the command will not display it in the directory listing. Therefore, add it.
 
 4. Running the miR_RF Tool:
    - To utilize the miR_RF Tool for predicting pre-miRNAs, use the following command in the terminal or command line interface:
