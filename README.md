@@ -114,6 +114,6 @@ The output file contains pre-miRNA names and their corresponding predictions:
    miRNA_input.txt: Example input file containing pre-miRNA data.
    predictions_output.txt: Output file to store the prediction results.
 
-   Ensure that the input file follows the specified format (see ### Input requirements section). Upon executing this command, the application.py program will 
+   Ensure that the input file follows the specified format (see Input requirements). Upon executing this command, the application.py program will 
    process the input data, execute feature extraction, and generate predictions using the trained model.
 
