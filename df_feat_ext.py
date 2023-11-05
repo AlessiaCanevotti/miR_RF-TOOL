@@ -10,19 +10,7 @@ import time
 
 import sys
 
-# def main():
-#     if len(sys.argv) != 3:
-#         print("Usage: python3 script.py input_value output_value")
-#         sys.exit(1)
-#     input_value = sys.argv[1]
-#     output_value = sys.argv[2]
-#     print("Input value:", input_value)
-#     print("Output value:", output_value)
 
-
-
-# Prompt the user for a file name
-#user_file = input("Enter the input file name: ")
 if __name__=="__main__":
     user_file = sys.argv[1]
 
