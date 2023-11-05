@@ -83,6 +83,20 @@ The output file contains pre-miRNA names and their corresponding predictions:
    ```
    This step ensures that the appropriate environment, complete with all the necessary channels and packages required to run the miR_RF Tool, is activated. The 
    configuration_file.yml contains a specific set of channel configurations and package installations essential for the execution of the tool.
-   By following these steps, users will have the correct environment with pre-configured channels and packages, ready to utilize the miR_RF Tool efficiently.
+   By following these steps, you will have the correct environment with pre-configured channels and packages, ready to utilize the miR_RF Tool efficiently.
 
-3. 
+3. Setting up the directory:
+   - Add in the same directory where it is present the `configuration_file.yml` file, the provided following files:
+      - `df_feat_ext.py`: Python script for feature extraction from pre-miRNAs;
+      - `make_pred.R`: R script for making predictions using machine learning;
+      - `trained_model.RDS`: Includes the pre-trained model data necessary for predictions;
+      - `application.py`: Executor program coordinating the feature extraction and prediction processes
+  Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `df_feat_ext.py`, `make_pred.R` and `application.py` are located in the same directory. In 
+  order to check, use the ls command along with the file names. For example:
+
+  ```bash
+  ls configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
+  ```
+  If any file is missing, the command will not display it in the directory listing.
+
+4. Execute the program: 
