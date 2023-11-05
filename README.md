@@ -76,19 +76,3 @@ After the environment is created, activate it by using the following command:
 
 ```bash
    conda activate miR_RF
-
-
-   
-
-### Contribution Guidelines
-Contributions to the miR_RF Tool are welcome. Guidelines for contributions will be detailed in subsequent updates.
-
-### License
-[License information will be added once determined.]
-
-### Contact Information
-For inquiries or collaboration, contact [insert contact information here].
-
----
-
-Feel free to modify and expand this template as needed, adding more detailed instructions once you have information about tool installation and licensing details.
