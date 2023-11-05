@@ -71,9 +71,10 @@ The output file contains pre-miRNA names and their corresponding predictions:
 
    ```bash
    conda env create -f configuration_file.yml
+   
    Note: Creating the environment may take some time, as Conda downloads and installs the necessary packages and dependencies.
 
-   After the environment is created, activate it by using the following command:
+- After the environment is created, activate it by using the following command:
 
    ```bash
    conda activate miR_RF
