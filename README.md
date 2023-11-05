@@ -91,12 +91,15 @@ The output file contains pre-miRNA names and their corresponding predictions:
       - `make_pred.R`: R script for making predictions using machine learning;
       - `trained_model.RDS`: Includes the pre-trained model data necessary for predictions;
       - `application.py`: Executor program coordinating the feature extraction and prediction processes
+
   Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `df_feat_ext.py`, `make_pred.R` and `application.py` are located in the same directory. In 
   order to check, use the ls command along with the file names. For example:
 
   ```bash
-  ls configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
+  cd /path/to/directory/containing/files
+  path/to/directory/containing/files ls configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
   ```
   If any file is missing, the command will not display it in the directory listing.
 
 4. Execute the program: 
+   
