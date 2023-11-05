@@ -27,6 +27,7 @@ For every input string, made by the header line followed by the sequence, the ou
 3. Centroid structure, with its energy and the minimal base-pair distance to all the structures in
 the thermodynamic ensemble, reported in curly brackets.
 4. Frequency of MFE structure in ensemble and ensemble diversity
+   
 - Multi-FASTA format is also supported.
 
 ### Usage
