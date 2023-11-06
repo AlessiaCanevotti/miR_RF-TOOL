@@ -75,7 +75,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    Download the `configuration_file.yml` file and copy it in the new directory, as follows:
 
    ```bash
-   ~/Downloads$ cp configuration_file.yml ~/miR_RF_tool
+   cp configuration_file.yml ~/miR_RF_tool
    ```
    - In the command line, activate conda with the following command:
 
@@ -83,7 +83,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    conda activate
    ``` 
    
-   - In the command line, remain in the directory containing the `configuration_file.yml` file and type the following command:
+   - Remain in the directory containing the `configuration_file.yml` file and clone the following command:
 
    ```bash
    conda env create -f configuration_file.yml
@@ -100,7 +100,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    By following these steps, you will have the correct environment with pre-configured channels and packages, ready to utilize the miR_RF Tool efficiently.
 
 2. Setting up the directory:
-   - Add in the same directory where it is present the `configuration_file.yml` file, the provided following files:
+   - Add in the same directory where it is present the `configuration_file.yml` and ".sh" files, the provided following files:
       - `df_feat_ext.py`: Python script for feature extraction from pre-miRNAs;
       - `make_pred.R`: R script for making predictions using machine learning;
       - `trained_model.RDS`: Includes the pre-trained model data necessary for predictions;
