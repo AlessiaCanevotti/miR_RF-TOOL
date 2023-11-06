@@ -137,4 +137,5 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    process the input data, execute feature extraction, and generate predictions using the trained model.
 
 5. Example usage:
+   
    Use the provided file, called "miRNA_sequences.txt", if needed, in order to obtain and run an input example. 
