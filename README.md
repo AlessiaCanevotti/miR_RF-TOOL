@@ -77,15 +77,20 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    ```bash
    ~/Downloads$ cp configuration_file.yml ~/miR_RF_tool
    ```
+   - In the command line, activate conda with the following command:
+
+   ```bash
+   conda activate
+   ``` 
    
    - In the command line, remain in the directory containing the `configuration_file.yml` file and type the following command:
 
    ```bash
    conda env create -f configuration_file.yml
    ```
-    Note: Creating the environment may take some time, as Conda downloads and installs the necessary packages and dependencies.
+   Note: Creating the environment may take some time, as Conda downloads and installs the necessary packages and dependencies.
 
-   - After the environment is created, activate it by using the following command:
+   - After the project environment is created, activate it by using the following command:
 
    ```bash
    conda activate miR_RF
