@@ -111,7 +111,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
 
   ```bash
   ~/miR_RF_tool$ ls
-  configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
+  Anaconda3-2023.09-0-Linux-x86_64.sh configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
   ```
   If any file is missing, the command will not display it in the directory listing. Therefore, add it.
 
