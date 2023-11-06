@@ -1,4 +1,4 @@
-Instructions for installing Conda via the command line in Linux are provided below:
+### Instructions for installing Conda via the command line in Linux are provided below:
 
 ---
 
@@ -13,7 +13,7 @@ Instructions for installing Conda via the command line in Linux are provided bel
 Alternatively, you can download the installer script directly from the command line with the "wget" command, as follows:
 
 ```bash
-wget [installer script link]https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
+wget [installer script link] https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
 ```
 
 #### Step 2: Open Terminal
@@ -39,6 +39,7 @@ wget [installer script link]https://repo.anaconda.com/archive/Anaconda3-2023.09-
 
 2. **Follow the Installer Prompts:**
    The installer will display installation instructions on the terminal. Follow the prompts and agree to the terms and conditions.
+   
 
 #### Step 4: Set Up the Environment
 
@@ -61,4 +62,5 @@ wget [installer script link]https://repo.anaconda.com/archive/Anaconda3-2023.09-
 ### Additional Notes:
 
 - **Checking Installation:**
-  To verify that Conda has been installed, you can type `conda list` in the terminal. This command should display a list of installed packages if Conda is set up correctly.
+  To verify that Conda has been installed, you can type `conda list` in the terminal. This command should display a list of installed packages if Conda is set up 
+  correctly.
