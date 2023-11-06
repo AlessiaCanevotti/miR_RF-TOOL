@@ -68,7 +68,7 @@ mkdir miR_RF_tool
 This command will create a new directory named "miR_RF_Tool" within the current location. Users can then move the necessary files here. 
 
 1. Conda Installation in Command Line:
-   - Follow the provided instructions in the 'CONDA installation instructions' file to install Conda on your system.
+   - Follow the provided instructions in the 'CONDA installation instructions' file to install Conda on your system in the directory just created.
 
 2. Activating the Conda environment:
    - Once Conda is installed, use the provided `configuration_file.yml` file to create an environment suitable for running the miR_RF Tool.
@@ -123,7 +123,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    Example Usage:
 
    ```bash
-   python3 application.py miRNA_input.txt predictions_output.txt
+   python3 application.py miRNA_sequences.txt predictions.txt
    ```
    miRNA_input.txt: Example input file containing pre-miRNA data.
    predictions_output.txt: Output file to store the prediction results.
