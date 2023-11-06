@@ -115,6 +115,16 @@ This command will create a new directory named "miR_RF_Tool" within the current 
   ```
   If any file is missing, the command will not display it in the directory listing. Therefore, add it.
 
+  Alternatively, you can download all repository files: 
+  To simplify the process of obtaining all the required files for the miR_RF Tool, a ZIP archive containing the complete repository content is available for 
+  download. Follow the steps below to access the archive:
+  - Access the Repository on GitHub;
+  - Click on "Code" Dropdown;
+  - Select "Download ZIP";
+  - After downloading the ZIP file, extract its contents and place them in a directory of your choice. This consolidated archive provides all the essential files 
+    required to run the miR_RF Tool seamlessly.
+
+
 4. Running the miR_RF Tool:
    - To utilize the miR_RF Tool for predicting pre-miRNAs, use the following command in the terminal or command line interface:
 
