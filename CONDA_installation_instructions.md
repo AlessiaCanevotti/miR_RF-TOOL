@@ -10,11 +10,11 @@
 2. **Select the Linux Version:**
    Choose the appropriate version for your Linux distribution (e.g., Ubuntu, CentOS) and download the installer script.
 
-Alternatively, you can download the installer script directly from the command line with the "wget" command, as follows:
+   Alternatively, you can download the installer script directly from the command line with the "wget" command, as follows:
 
-```bash
-wget [installer script link] https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
-```
+   ```bash
+   wget [installer script link] https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
+   ```
 
 #### Step 2: Open Terminal
 
