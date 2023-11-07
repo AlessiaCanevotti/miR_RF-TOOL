@@ -48,13 +48,14 @@ the thermodynamic ensemble, reported in curly brackets.
   >hsa-let-7a-1 first example 1
   ```
 
-  The above reported examples are both allowed as headers.
-  In order to simplify the usage, users can employ the Python script, called `Adjust_header.py`, provided here, as follows:
+  The above examples are both allowed as headers. 
+  In order to simplify the usage, it can be employed the Python script, called `Adjust_header.py`, provided here, as follows:
 
   ```bash
   python3 Adjust_header.py input_file_to_adjust.txt output_file_adjusted.txt
   ```
-  Note: consider that the provided code only processes and replaces headers presenting the following symbols: "\t" and ",". 
+  Note: consider that the provided code only processes and replaces headers presenting the following symbols: "\t" and ",". However, users can modify it 
+  according to their needs. 
   
   
 ### Input Example
