@@ -47,7 +47,7 @@ the thermodynamic ensemble, reported in curly brackets.
   >hsa-let-7a-1 first example 1
   ```
 
-  The above reported examples are both allowed as headers
+  The above reported examples are both allowed as headers.
 
 ### Input Example
 
