@@ -122,7 +122,8 @@ This command will create a new directory named "miR_RF_Tool" within the current 
       - `df_feat_ext.py`: Python script for feature extraction from pre-miRNAs;
       - `make_pred.R`: R script for making predictions using machine learning;
       - `trained_model.RDS`: Includes the pre-trained model data necessary for predictions;
-      - `application.py`: Executor program coordinating the feature extraction and prediction processes
+      - `application.py`: Executor program coordinating the feature extraction and prediction processes;
+      - `Adjust_header.py`: Adjust the headers of the input, if needed
 
    Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `df_feat_ext.py`, `make_pred.R` and `application.py` are located in the same directory. In 
    order to check, use the ls command along with the file names. For example:
