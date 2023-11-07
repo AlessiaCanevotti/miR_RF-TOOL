@@ -32,14 +32,17 @@ the thermodynamic ensemble, reported in curly brackets.
 4. Frequency of MFE structure in ensemble and ensemble diversity
    
 - Multi-FASTA format is also supported.
-- The miR_RF Tool accommodates a range of input file formats. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data effectively, irrespective of the file extension. Feel free to use the format that best suits your data. 
+- The miR_RF Tool accommodates a range of input file formats. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data effectively, irrespective of the file extension. Feel free to use the format that best suits your data.
+- Note: the header cannot contain spaces ("\t"). If you need to insert other info regarding the header, use "_" for connecting words or numbers.
+  For example:
+  >hsa-let-7a-1_first_example_1
 
 ### Input Example
 
 Sample input file structure:
 
 ```plaintext
->hsa-let-7a-1 MI0000060 Homo sapiens let-7a-1 stem-loop
+>hsa-let-7a-1
 UGGGAUGAGGUAGUAGGUUGUAUAGUUUUAGGGUCACACCCACCACUGGGAGAUAACUAUACAAUCUACUGUCUUUCCUA
 (((((.(((((((((((((((((((((.....(((...((((....)))).))))))))))))))))))))))))))))) (-34.20)
 {((((.(((((((((((((((((((((.....(((...((({....}))).))))))))))))))))))))))))))))} [-35.18]
@@ -53,8 +56,8 @@ UGGGAUGAGGUAGUAGGUUGUAUAGUUUUAGGGUCACACCCACCACUGGGAGAUAACUAUACAAUCUACUGUCUUUCCUA
 The output file contains pre-miRNA names and their corresponding predictions:
 
 ```plaintext
-"miRNA name"                                               "prediction"
-">hsa-let-7a-1 MI0000060 Homo sapiens let-7a-1 stem-loop"       "2"
+"miRNA name"       "prediction"
+">hsa-let-7a-1"       "2"
 ```
 
 ### Installation
