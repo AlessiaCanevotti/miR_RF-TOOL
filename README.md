@@ -34,8 +34,8 @@ the thermodynamic ensemble, reported in curly brackets.
 - Multi-FASTA format is also supported.
 - The miR_RF Tool accommodates a range of input file formats. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data 
   effectively, irrespective of the file extension. Feel free to use the format that best suits your data.
-- Important note: the header cannot contain values if not separated by a single space " " or the underscore symbol "_". Therefore, if you need to insert other 
-  info regarding the header, use "_" or " " for connecting words or numbers.
+- Important note: the header cannot contain values if not separated by a single space " " or the underscore symbol "". Therefore, if you need to insert other 
+  info regarding the header, use "" or " " for connecting words or numbers.
 
   For example:
   
