@@ -16,8 +16,3 @@ for line in lines:
 
 with open(output_file, 'w') as file:
     file.writelines(modified_lines)
-
-# Why if I run this code, it gives me the error: Traceback (most recent call last):
-  File "/home/acanevotti/miR_RF_TOOL/Adjust_header.py", line 4, in <module>
-    user_file = sys.argv[1]
-IndexError: list index out of range
