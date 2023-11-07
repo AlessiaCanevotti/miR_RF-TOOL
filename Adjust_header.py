@@ -1,3 +1,5 @@
+import sys 
+
 if __name__=="__main__":
     user_file = sys.argv[1]
     output_file = sys.argv[2]
