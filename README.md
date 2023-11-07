@@ -49,7 +49,8 @@ the thermodynamic ensemble, reported in curly brackets.
   ```
 
   The above reported examples are both allowed as headers.
-  In order to simplify the usage, users can emply the python script, called "Adjust_header.py" provided here. 
+  In order to simplify the usage, users can emply the python script, called "Adjust_header.py" provided here.
+  Note: consider that the provided code only processes and replaces headers presenting the following sumbols: "\t" and ",". 
 
 ### Input Example
 
