@@ -127,7 +127,7 @@ with open(resulting_string, "w") as file:
         new_name = str(my_name.replace("\t", ",")).split(",")
         name = new_name[0]
         # Write the data to the file
-        file.write(name + "\n")
+        file.write(my_name + "\n")
         file.write(new_seq + "\n")
         file.write(new_not + "\n")
 
