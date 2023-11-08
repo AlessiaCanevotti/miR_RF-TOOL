@@ -34,28 +34,21 @@ the thermodynamic ensemble, reported in curly brackets.
 - Multi-FASTA format is also supported.
 - The miR_RF Tool accommodates a range of input file formats. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data 
   effectively, irrespective of the file extension. Feel free to use the format that best suits your data.
-- Important note: the header cannot contain values if not separated by a single space " " or the underscore symbol "". Therefore, if you need to insert other 
-  info regarding the header, use "" or " " for connecting words or numbers.
+- Important note: the header cannot contain values separated by the tab symbol "\t". Therefore, the tool converts by default any "\t" present in the header into a single 
+  space " ". 
 
-  For example:
+  For example, from this input:
   
   ```plaintext
-  >hsa-let-7a-1_first_example_1
+  >hsa-let-7a-1  first_example  1
   ```
-  or:
+  to: 
   
   ```plaintext
   >hsa-let-7a-1 first example 1
   ```
 
-  The above examples are both allowed as headers. 
-  In order to simplify the usage, it can be employed the Python script, called `Adjust_header.py`, provided here, as follows:
-
-  ```bash
-  python3 Adjust_header.py input_file_to_adjust.txt output_file_adjusted.txt
-  ```
-  Note: consider that the provided code only processes and replaces headers presenting the following symbols: "\t" and ",". However, users can modify it 
-  according to their needs. 
+  Note: consider that the code only processes and replaces headers presenting the following symbol: "\t". Any other formats will remain as presented in the input.  
   
   
 ### Input Example
