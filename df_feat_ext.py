@@ -3,22 +3,29 @@ from typing import TextIO
 import pandas as pd
 import re
 import os
-from io import StringIO
-import random
-import string
-import time
-
 import sys
 
 
 if __name__=="__main__":
     user_file = sys.argv[1]
 
+file_path = user_file
+output_file = f"header_file_for_{user_file}"
+
+with open(file_path, 'r') as file:
+    lines = file.readlines()
+modified_lines = []
+for line in lines:
+    if line.startswith('>'):
+        modified_lines.append(line.replace('\t', ' '))
+    else:
+        modified_lines.append(line)
+with open(output_file, 'w') as file:
+    file.writelines(modified_lines)
 
 
 try:
-    # Open the user-specified file for reading
-    with open(user_file, "r") as file_output_rnafold:
+    with open(output_file, "r") as file_output_rnafold:
         RNAfold_output = file_output_rnafold.readlines()
 except FileNotFoundError:
     print(f"Error: The input file '{user_file}' was not found.")
@@ -49,8 +56,8 @@ for i in range(0, len(RNAfold_output), 6):
 mirna_data = []
 for i in range(len(header)):
     mirna = {}
-    mirna['header'] = str(header[i].replace("\t", ",")).split(",")
-    mirna['header'] = mirna['header'][0]
+    mirna['header'] = str(header[i])#.replace("\t", ",")).split(",")
+    #mirna['header'] = mirna['header'][0]
     energy_match = re.search(r'([-+]\d+\.\d+)', dots_brackets1[i])
     if energy_match:
         mirna['energy_value1'] = float(energy_match.group(1))
@@ -69,14 +76,15 @@ for i in range(len(header)):
         mirna['diversity'] = float(div_match.group(1))
     mirna_data.append(mirna)
 df_energies = pd.DataFrame(mirna_data)
-#df_ENERGIES = df_energies.drop(columns=['header'])
+#df_energies['header'] = df_energies['header'].apply(lambda x: '"' + x + '"')
 df_energies.set_index('header', inplace=True)
-
+df_energies = df_energies.drop_duplicates()
+#df_energies.to_csv(f"df_energies_for_{user_file}")
 
 
 # I create a function that removes the dots only at the beginning and at the end of each dots_brackets1 notation,
 # creating a file that only has the clean notations (clean_seq.out) which will be the new input file
-file_output_rnafold = open(user_file, "r")
+file_output_rnafold = open(output_file, "r")
 RNAfold_output = file_output_rnafold.readlines()
 header = []  # This is for the headers
 seq = []  # This is for the sequences
@@ -111,7 +119,7 @@ with open(resulting_string, "w") as file:
         my_not = mir_dict[d][0]
         count_x = 0
         count_y = 0
-        for x in my_not:
+        for x in my_not: 
             if x == ".":
                 count_x += 1
             else:
@@ -124,12 +132,11 @@ with open(resulting_string, "w") as file:
                 break
         new_not = my_not[count_x:len(my_not) - count_y]
         new_seq = my_seq[count_x:len(my_seq) - count_y]
-        new_name = str(my_name.replace("\t", ",")).split(",")
-        name = new_name[0]
         # Write the data to the file
         file.write(my_name + "\n")
         file.write(new_seq + "\n")
         file.write(new_not + "\n")
+
 
 
 # EXTRACTING THE LONGEST HAIRPIN
@@ -472,6 +479,7 @@ with open(file_path, "w") as file:
         file.write(structure + "\n")
 
 
+
 # INFO LOOPS
 RNAfold_out = open(random_file_name, "r")
 RNAfold_output = RNAfold_out.readlines()
@@ -488,17 +496,23 @@ file_info_loops = f"info_loops_for_{user_file}"
 with open(file_info_loops, "w") as file_info:
     i = 0
     for line in dots_brackets1:
-        loop = str(re.search(find_loops, line))
-        indexes = loop.split("span=")[1].split(", m")[0].replace("(", "").replace(")", "").split(",")
-        indexes_updated = [int(indexes[0])+1, int(indexes[1])-2]
-        count_real_loops = [(len(re.findall(re_3_2, line)))]
-        count_real_loops_without_parenthesis = str(count_real_loops).replace("[", " ").replace("]", " ")
-        loop_length = indexes_updated[-1] - indexes_updated[0]
-        ind_upd_start = indexes_updated[0]
-        ind_upd_end = indexes_updated[-1]
-        len_loop = loop_length
-        file_info.write(str(header[i]) + "\t" + str(1) + "\t" + str(ind_upd_start) + "\t" + str(ind_upd_end) + "\t" + str(len_loop) + "\n")
-        i += 1
+        find_loops = str(re.search(re_3_2, my_not))
+        if find_loops == 'None':
+            find_loops = find_loops
+            file_info.write(str(my_name) + "\t" + "0" + "\t" + "0" + "\t" + "0" + "\t" + "0" + "\n")
+        else:
+            #loop = str(re.search(find_loops, line))
+            #print(loop)
+            indexes = find_loops.split("span=")[1].split(", m")[0].replace("(", "").replace(")", "").split(",")
+            indexes_updated = [int(indexes[0])+1, int(indexes[1])-2]
+            count_real_loops = [(len(re.findall(re_3_2, line)))]
+            count_real_loops_without_parenthesis = str(count_real_loops).replace("[", " ").replace("]", " ")
+            loop_length = indexes_updated[-1] - indexes_updated[0]
+            ind_upd_start = indexes_updated[0]
+            ind_upd_end = indexes_updated[-1]
+            len_loop = loop_length
+            file_info.write(str(header[i]) + "\t" + str(1) + "\t" + str(ind_upd_start) + "\t" + str(ind_upd_end) + "\t" + str(len_loop) + "\n")
+            i += 1
 data = []
 with open(file_info_loops, 'r') as file:
     for line in file:
@@ -513,7 +527,6 @@ with open(file_info_loops, 'r') as file:
         })
 df_loops = pd.DataFrame(data)
 df_loops.set_index('Header', inplace=True)
-
 
 
 # 32 FEATURES
@@ -603,8 +616,6 @@ with open(file_32_features, 'r') as file:
         })
 df_32 = pd.DataFrame(data2)
 df_32.set_index('Header', inplace=True)
-#df_32_FEATURES = df_32.drop(columns=['Header'])
-#print(df_32)
 
 
 # COUNT NUCLEOTIDES
@@ -671,9 +682,6 @@ with open(file_nucleotides_features, 'r') as file:
         })
 df_nucleotides = pd.DataFrame.from_dict(data3)
 df_nucleotides.set_index('Header', inplace=True)
-#df_nucleotides.to_csv("prova.tsv")
-#print(df_nucleotides)
-
 
 
 # BASE PAIRING
@@ -724,8 +732,10 @@ for i in range(0, len(RNAfold_output), 3):
 loop_info = load_loop_info(file_info_loops)
 mirna_counts = count_bases_before_loop_start(header, seq, dots_brackets1, loop_info)
 df_pairs = pd.DataFrame(columns=['C_paired', 'A_paired', 'G_paired', 'U_paired', 'C_unpaired', 'A_unpaired', 'G_unpaired', 'U_unpaired'])
+mirna_rows = []
 for mirna, counts in mirna_counts.items():
     row = {
+        'mirna_name': mirna,
         'C_paired': counts['C']['paired'],
         'A_paired': counts['A']['paired'],
         'G_paired': counts['G']['paired'],
@@ -735,23 +745,13 @@ for mirna, counts in mirna_counts.items():
         'G_unpaired': counts['G']['unpaired'],
         'U_unpaired': counts['U']['unpaired']
     }
-    df_pairs.loc[mirna] = row
+    mirna_rows.append(row)
+df_pairs = pd.DataFrame(mirna_rows, columns=['mirna_name', 'C_paired', 'A_paired', 'G_paired', 'U_paired','C_unpaired', 'A_unpaired', 'G_unpaired', 'U_unpaired'])
+df_pairs.set_index('mirna_name', inplace=True)
 # Create a df where the rows are the mirna names and the columns correspond to the results of:
 # count_CG, count_GC, count_UA, count_AU, count_UG, count_GU, count_AA, count_GG, count_UU, count_CC, frequency_couple_CG,
 # frequency_couple_GC, frequency_couple_UA, frequency_couple_AU, frequency_couple_UG, frequency_couple_GU, frequency_couple_AA,
 # frequency_couple_GG, frequency_couple_UU, frequency_couple_CC
-file_output_rnafold = open(random_file_name, "r")
-RNAfold_output = file_output_rnafold.readlines()
-header = []  # This is for the headers
-seq = []  # This is for the sequences
-dots_brackets1 = []  # This is for the first dots-brackets notation
-mir_dict = {}  # empty dictionary
-for i in range(0, len(RNAfold_output), 3):
-    header.append(RNAfold_output[i].strip("\n"))
-    seq.append(RNAfold_output[i + 1])
-    dots_brackets1.append(RNAfold_output[i + 2])
-for e in range(len(header)):
-    mir_dict[(header[e].strip("\n"), seq[e].strip("\n"))] = [dots_brackets1[e].strip("\n")]
 results = {
     'mirna_name': [],
     'count_CG': [],
@@ -778,7 +778,7 @@ results = {
 for d in mir_dict:
     my_name = d[0]
     my_seq = d[1]
-    my_not = mir_dict[d][0]
+    my_not = mir_dict[d]#[0]
     total_len = len(my_not)
     initial_index = 0
     final_index = total_len - 1
@@ -847,16 +847,46 @@ for d in mir_dict:
     count_UU = len(UU_couples) / 2
     count_CC = len(CC_couples) / 2
     total_numb_pairings = count_CG + count_GC + count_UA + count_AU + count_UG + count_GU + count_AA + count_GG + count_UU + count_CC  # measure the total number of pairings found
-    frequency_couple_CG = count_CG / float(total_numb_pairings)  # measure the number of occurrences of CG over the total number of pairings
-    frequency_couple_GC = count_GC / float(total_numb_pairings)
-    frequency_couple_UA = count_UA / float(total_numb_pairings)
-    frequency_couple_AU = count_AU / float(total_numb_pairings)
-    frequency_couple_UG = count_UG / float(total_numb_pairings)
-    frequency_couple_GU = count_GU / float(total_numb_pairings)
-    frequency_couple_AA = count_AA / float(total_numb_pairings)
-    frequency_couple_GG = count_GG / float(total_numb_pairings)
-    frequency_couple_UU = count_UU / float(total_numb_pairings)
-    frequency_couple_CC = count_CC / float(total_numb_pairings)
+    if total_numb_pairings != 0:
+        frequency_couple_CG = count_CG / float(total_numb_pairings)
+    else:
+        frequency_couple_CG = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_GC = count_GC / float(total_numb_pairings)
+    else:
+        frequency_couple_GC = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_UA = count_UA / float(total_numb_pairings)
+    else:
+        frequency_couple_UA = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_AU = count_AU / float(total_numb_pairings)
+    else:
+        frequency_couple_AU = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_UG = count_UG / float(total_numb_pairings)
+    else:
+        frequency_couple_UG = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_GU = count_GU / float(total_numb_pairings)
+    else:
+        frequency_couple_GU = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_AA = count_AA / float(total_numb_pairings)
+    else:
+        frequency_couple_AA = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_GG = count_GG / float(total_numb_pairings)
+    else:
+        frequency_couple_GG = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_UU = count_UU / float(total_numb_pairings)
+    else:
+        frequency_couple_UU = 0.0
+    if total_numb_pairings != 0:
+        frequency_couple_CC = count_CC / float(total_numb_pairings)
+    else:
+        frequency_couple_CC = 0.0
     results['mirna_name'].append(my_name)
     results['count_CG'].append(count_CG)
     results['count_GC'].append(count_GC)
@@ -878,11 +908,10 @@ for d in mir_dict:
     results['frequency_couple_GG'].append(frequency_couple_GG)
     results['frequency_couple_UU'].append(frequency_couple_UU)
     results['frequency_couple_CC'].append(frequency_couple_CC)
-df = pd.DataFrame(results)
-df.set_index('mirna_name', inplace=True)
-df_base_features = pd.concat([df_pairs, df], axis=1)
-#df_base_features.to_csv(f"info_base_pairing_for_{user_file}", sep="\t", header=None)
-#print(df_base_features)
+df_b = pd.DataFrame(results)
+df_b.set_index('mirna_name', inplace=True)
+df_base_features = pd.concat([df_pairs, df_b], axis=1)
+#df_base_features.to_csv(f"POT_info_base_pairing_for_{user_file}.tsv", sep="\t")
 
 
 
@@ -914,19 +943,22 @@ for d in mir_dict:
     bul = re.findall(regex_putative_bulge, my_not)
     central_loop = re.search(r"(\({2}\.{3,}\){2})+", my_not)  # not useful here
     indices = []  # List to store the start and end indices of matched patterns
+    matched_bulges = []
+    # print("Current miRNA:", my_name)
+    # print("Bulges:", bul)
     for b in bul:
-        if b not in pattern_counts:
-            pattern_counts[b] = {}  # Create an empty dictionary for the pattern if it's not already present
-        if my_name not in pattern_counts[b]:
-            pattern_counts[b][my_name] = 1  # Initialize the count for the miRNA in the pattern dictionary
-        else:
-            pattern_counts[b][my_name] += 1  # Increment the count for the miRNA in the pattern dictionary
-        # Find the first occurrence of the pattern in the RNA secondary structure string
+        # print("Checking bulge:", b)
+        if b not in matched_bulges:
+            matched_bulges.append(b)
+            if b not in pattern_counts:
+                pattern_counts[b] = {}
+            if my_name not in pattern_counts[b]:
+                pattern_counts[b][my_name] = 1
+            else:
+                pattern_counts[b][my_name] += 1
         match = re.search(re.escape(b), my_not)
-        # Get the start and end indices of the matched pattern
         start = match.start()
         end = match.end()
-        # Store the start and end indices as a tuple in the indices list
         indices.append((start, end))
         if '(' in b:
             if my_name not in bulge_5_prime_counts:
@@ -940,7 +972,6 @@ for d in mir_dict:
                 bulge_3_prime_counts[my_name] += 1
     if my_name not in miRNA_order:
         miRNA_order.append(my_name)
-# Define the desired patterns
 patterns = [
     '(.(',
     '(............(',
@@ -978,7 +1009,6 @@ patterns = [
     '(.....................(',
     ')................)'
 ]
-# Initialize pattern counts to 0
 for pattern in patterns:
     pattern_counts.setdefault(pattern, {})
 df = pd.DataFrame(pattern_counts)
@@ -996,8 +1026,6 @@ column_order = ['(.(', '(............(', '(...(', ')....)', ').)', ')..)', ')...
                 'Bulges_5_prime', 'Bulges_3_prime']
 df_bulges = df[column_order]
 #df_bulges.to_csv(f"info_bulges_for_{user_file}", sep="\t", header=None)
-#print(df_bulges)
-
 
 
 DF_TOTAL = pd.DataFrame(pd.concat([df_loops, df_32, df_nucleotides, df_base_features, df_bulges, df_energies], axis=1))
@@ -1008,7 +1036,7 @@ DF_TOTAL.to_csv(f"features_table_for_{user_file}", sep="\t")
 import os
 
 # Remove intermediate files
-intermediate_files = [resulting_string, file_info_loops, file_32_features, file_nucleotides_features, random_file_name]
+intermediate_files = [resulting_string, file_info_loops, file_32_features, file_nucleotides_features, random_file_name, output_file]
 for file in intermediate_files:
     try:
         os.remove(file)
