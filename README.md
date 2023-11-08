@@ -10,7 +10,7 @@ The miR_RF Tool is a predictive tool for evaluating pre-microRNAs based on the m
 ### Overview
 
 The miR_RF Tool is comprised of Python and R scripts:
-- **Python Script (Preprocessing):**
+- **Python Script (Pre-processing):**
   - Extracts features from pre-miRNAs present in RNAfold output files.
   - Converts extracted features into numerical format and produces an intermediate file for R processing.
   - Input: RNAfold output file.
@@ -48,7 +48,8 @@ the thermodynamic ensemble, reported in curly brackets.
   >hsa-let-7a-1 first example 1
   ```
 
-  Note: consider that the code only processes and replaces headers presenting the following symbol: "\t". Any other formats will remain as presented in the input.  
+  Note: consider that the code only processes and replaces headers presenting the following symbol: "\t". Any other formats will remain in the final output as written in 
+  input.  
   
   
 ### Input Example
