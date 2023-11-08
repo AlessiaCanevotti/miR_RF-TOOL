@@ -125,13 +125,13 @@ This command will create a new directory named "miR_RF_Tool" within the current 
       - `trained_model.RDS`: Includes the pre-trained model data necessary for predictions;
       - `application.py`: Executor program coordinating the feature extraction and prediction processes;
  
-   On command line, copy the repository URL in the wright directory and write:
+   On command line, copy the repository URL in the right directory and write:
 
    ```bash
    git clone <repository_URL>
    ```
    
-   Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `df_feat_ext.py`, `make_pred.R` and `application.py` are located in the same directory. In 
+   Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `PY_features_extraction.py`, `make_pred.R` and `application.py` are located in the same directory. In 
    order to check, use the ls command along with the file names.
    For example:
 
