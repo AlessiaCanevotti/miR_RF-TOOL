@@ -117,37 +117,35 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    configuration_file.yml contains a specific set of channel configurations and package installations essential for the execution of the tool.
    By following these steps, you will have the correct environment with pre-configured channels and packages, ready to utilize the miR_RF Tool efficiently.
 
-2. Setting up the directory:
+
+3. Setting up the directory:
    - Add in the same directory where it is present the `configuration_file.yml` and ".sh" files, the provided following files:
       - `PY_features_extraction.py`: Python script for feature extraction from pre-miRNAs;
       - `make_pred.R`: R script for making predictions using machine learning;
       - `trained_model.RDS`: Includes the pre-trained model data necessary for predictions;
       - `application.py`: Executor program coordinating the feature extraction and prediction processes;
+ 
+   On command line, copy the repository URL in the wright directory and write:
 
+   ```bash
+   git clone <repository_URL>
+   ```
+   
    Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `df_feat_ext.py`, `make_pred.R` and `application.py` are located in the same directory. In 
-   order to check, use the ls command along with the file names. For example:
+   order to check, use the ls command along with the file names.
+   For example:
 
    ```bash
    ~/miR_RF_tool$ ls
    Anaconda3-2023.09-0-Linux-x86_64.sh configuration_file.yml trained_model.RDS df_feat_ext.py make_pred.R application.py
    ```
-   If any file is missing, the command will not display it in the directory listing. Therefore, add it.
-
-   Alternatively, you can download all repository files: 
-   To simplify the process of obtaining all the required files for the miR_RF Tool, a ZIP archive containing the complete repository content is available for 
-   download. Follow the steps below to access the archive:
-   - Access the Repository on GitHub;
-   - Click on "Code" Dropdown;
-   - Select "Download ZIP";
-   - After downloading the ZIP file, extract its contents and place them in a directory of your choice. This consolidated archive provides all the essential 
-   files required to run the miR_RF Tool seamlessly.
-
+  
 
 4. Running the miR_RF Tool:
    - To utilize the miR_RF Tool for predicting pre-miRNAs, use the following command in the terminal or command line interface:
 
    ```bash
-   python3 application.py input_file output_file
+   python3 application.py <input_file> <output_file>
    ```
 
    Replace input_file with the name of the file containing pre-miRNA data in the required format. Similarly, replace output_file with the desired name for the 
@@ -163,6 +161,7 @@ This command will create a new directory named "miR_RF_Tool" within the current 
 
    Ensure that the input file follows the specified format (see Input requirements). Upon executing this command, the `application.py` program will 
    process the input data, execute feature extraction, and generate predictions using the trained model.
+
 
 5. Example input file:
    
