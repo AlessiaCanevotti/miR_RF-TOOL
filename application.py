@@ -3,7 +3,7 @@ import os
 
 def runner(inp, out):
     try:
-        os.system("PY_features_extraction.py " + inp)
+        os.system("python3 PY_features_extraction.py " + inp)
     except:
         print("Error: Failed to execute. Please, enter the input file name.")
         pass
