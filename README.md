@@ -22,6 +22,7 @@ The miR_RF Tool is comprised of Python and R scripts:
   - Output: Text file with predictions (2 for YES, 1 for NO) for each pre-miRNA.
 
 ### Input Requirements
+
 The tool accepts RNAfold output files as input, structured in the following format:
 - A file with a header line starting with ">" followed by five subsequent lines for each pre-miRNA. 
 For every input string, made by the header line followed by the sequence, the output is composed by four lines corresponding to respectively:
@@ -32,7 +33,24 @@ the thermodynamic ensemble, reported in curly brackets.
 4. Frequency of MFE structure in ensemble and ensemble diversity
    
 - Multi-FASTA format is also supported.
-- The miR_RF Tool accommodates a range of input file formats. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data 
+
+In order to obtain the right input for the miR_RF tool, you can install RNAfold Vienna package on your machine, in command line.
+To install this package run one of the following:
+
+```bash
+conda install -c bioconda viennarna
+conda install -c "bioconda/label/cf201901" viennarna
+```
+
+And then:
+
+```bash
+RNAfold -p -d2 --noLP <input_file> > <output_RNAfold_file>
+```
+
+This command creates the <output_RNAfold_file> which is the input for the miR_RF tool. 
+
+- The miR_RF Tool accommodates a range of input file extensions. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data 
   effectively, irrespective of the file extension. Feel free to use the format that best suits your data.
 - Important note: the header cannot contain values separated by the tab symbol "\t". Therefore, the tool converts by default any "\t" present in the header into a single 
   space " ". 
@@ -160,13 +178,14 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    
    predictions_output.txt: Output file to store the prediction results.
 
-   Ensure that the input file follows the specified format (see Input requirements). Upon executing this command, the `application.py` program will process the input data, execute feature extraction, and 
-   generate predictions using the trained model.
+   Ensure that the input file follows the specified format (see Input requirements). Upon executing this command, the `application.py` program will process the input data, 
+   execute feature extraction, and generate predictions using the trained model.
 
 
 6. Example input file:
    
    Use the provided file, called "miRNA_sequences.txt", if needed, in order to obtain and run an input example.
+
 
 7. Visualising the output:
 
