@@ -157,17 +157,18 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    python3 application.py miRNA_sequences.txt predictions.txt
    ```
    miRNA_sequences.txt: Example input file containing pre-miRNA data.
+   
    predictions_output.txt: Output file to store the prediction results.
 
-   Ensure that the input file follows the specified format (see Input requirements). Upon executing this command, the `application.py` program will 
-   process the input data, execute feature extraction, and generate predictions using the trained model.
+   Ensure that the input file follows the specified format (see Input requirements). Upon executing this command, the `application.py` program will process the input data, execute feature extraction, and 
+   generate predictions using the trained model.
 
 
-5. Example input file:
+6. Example input file:
    
    Use the provided file, called "miRNA_sequences.txt", if needed, in order to obtain and run an input example.
 
-6. Visualising the output:
+7. Visualising the output:
 
    In order to display the final output, you can type "less" or "more" in the command line, for example:
 
