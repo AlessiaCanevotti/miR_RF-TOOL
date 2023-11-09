@@ -34,24 +34,23 @@ the thermodynamic ensemble, reported in curly brackets.
    
 - Multi-FASTA format is also supported.
 
-In order to obtain the right input for the miR_RF tool, you can install RNAfold Vienna package on your machine, in command line.
-To install this package run one of the following:
+In order to obtain the right input for the miR_RF tool, you can install RNAfold Vienna package on your machine, in command line. To install this package run one of the following:
 
 ```bash
 conda install -c bioconda viennarna
 conda install -c "bioconda/label/cf201901" viennarna
 ```
 
-And then:
+And then type:
 
 ```bash
-RNAfold -p -d2 --noLP <input_file> > <output_RNAfold_file>
+RNAfold -p -d2 --noLP −−noPS −−noDP <input_file> > <output_RNAfold_file>
 ```
 
-This command creates the <output_RNAfold_file> which is the input for the miR_RF tool. 
+This command creates the <output_RNAfold_file> file, which is the input for the miR_RF tool. 
 
 - The miR_RF Tool accommodates a range of input file extensions. Whether it's a .txt, .out, or another format, the tool is engineered to process pre-miRNA data 
-  effectively, irrespective of the file extension. Feel free to use the format that best suits your data.
+  effectively, irrespective of the file extension. 
 - Important note: the header cannot contain values separated by the tab symbol "\t". Therefore, the tool converts by default any "\t" present in the header into a single 
   space " ". 
 
@@ -101,7 +100,7 @@ To create a new directory, for example named "miR_RF_Tool", in your current loca
 ```bash
 mkdir miR_RF_tool
 ```
-This command will create a new directory named "miR_RF_Tool" within the current location. Users can then move the necessary files here. 
+This command will create a new directory named "miR_RF_Tool" within the current location. Users can then put the necessary files here. 
 
 1. Conda Installation in Command Line:
    - Follow the provided instructions in the 'CONDA installation instructions' file to install Conda on your system in the directory just created.
@@ -149,9 +148,9 @@ This command will create a new directory named "miR_RF_Tool" within the current 
    git clone <repository_URL>
    ```
    
-   Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `PY_features_extraction.py`, `make_pred.R` and `application.py` are located in the same directory. In 
-   order to check, use the ls command along with the file names.
-   For example:
+   Note: make sure that `configuration_file.yml`, `trained_model.RDS`, `PY_features_extraction.py`, `make_pred.R` and `application.py` are located in the same directory. 
+   In order to check, use the ls command along with the file names.
+   Type:
 
    ```bash
    ~/miR_RF_tool$ ls
