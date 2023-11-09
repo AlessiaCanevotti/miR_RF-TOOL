@@ -165,4 +165,19 @@ This command will create a new directory named "miR_RF_Tool" within the current 
 
 5. Example input file:
    
-   Use the provided file, called "miRNA_sequences.txt", if needed, in order to obtain and run an input example. 
+   Use the provided file, called "miRNA_sequences.txt", if needed, in order to obtain and run an input example.
+
+6. Visualising the output:
+
+   In order to display the final output, you can type "less" or "more" in the command line, for example:
+
+   ```bash
+   less <output_file>
+   ```
+   
+   or:
+
+   ```bash
+   more <output_file>
+   ```
+   
