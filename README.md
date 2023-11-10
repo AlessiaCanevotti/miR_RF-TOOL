@@ -44,7 +44,7 @@ conda install -c "bioconda/label/cf201901" viennarna
 And then type:
 
 ```bash
-RNAfold -p -d2 --noLP −−noPS −−noDP <input_file> > <output_RNAfold_file>
+RNAfold -p -d2 --noLP --noDP --noPS <input_file> > <output_RNAfold_file>
 ```
 
 This command creates the <output_RNAfold_file> file, which is the input for the miR_RF tool. 
