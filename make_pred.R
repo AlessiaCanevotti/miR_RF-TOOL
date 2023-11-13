@@ -26,6 +26,7 @@ df_1917 <-input_R[new_column_order]
 new_1917_norm_by_len = df_1917[,1:124]/df_1917$`hairpin length`
 new_1917_normL <- cbind(new_1917_norm_by_len, df_1917[, 125:125])
 colnames(new_1917_normL)[125] <- 'real miRNA'
+set.seed(825)
 
 # Use the loaded trained model to make predictions
 output <- predict_output(trained_model, new_1917_normL)
