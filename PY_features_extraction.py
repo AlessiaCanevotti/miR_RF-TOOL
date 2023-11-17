@@ -6,14 +6,11 @@ import os
 import sys
 
 
-#user_file = input("Enter the input file name: ")
-
 if __name__=="__main__":
     user_file = sys.argv[1]
-
-
 file_path = user_file
 output_file = f"header_file_for_{user_file}"
+
 
 with open(file_path, 'r') as file:
     lines = file.readlines()
@@ -82,7 +79,6 @@ df_energies = pd.DataFrame(mirna_data)
 #df_energies['header'] = df_energies['header'].apply(lambda x: '"' + x + '"')
 df_energies.set_index('header', inplace=True)
 df_energies = df_energies.drop_duplicates()
-#df_energies.to_csv(f"df_energies_for_{user_file}")
 
 
 # I create a function that removes the dots only at the beginning and at the end of each dots_brackets1 notation,
@@ -120,13 +116,9 @@ with open(resulting_string, "w") as file:
         my_name = d[0]
         my_seq = d[1]
         my_not = mir_dict[d][0]
-        #patt = r"\(\s*-?\d{1,3}(?:\.\d{1,3})?\s*\)"  #############
-        #repl = "" #############
-        #new_notation = str(re.sub(patt, repl, my_not)) #############
-        #my_notation = new_notation[0:len(new_notation) - 1] #############
         count_x = 0
         count_y = 0
-        for x in my_not: ##########
+        for x in my_not: 
             if x == ".":
                 count_x += 1
             else:
@@ -139,7 +131,9 @@ with open(resulting_string, "w") as file:
                 break
         new_not = my_not[count_x:len(my_not) - count_y]
         new_seq = my_seq[count_x:len(my_seq) - count_y]
-
+        #new_name = str(my_name.replace("\t", ",")).split(",")
+        #name = new_name[0]
+        #name = str('"' + my_name + '"')
         # Write the data to the file
         file.write(my_name + "\n")
         file.write(new_seq + "\n")
@@ -487,7 +481,7 @@ with open(file_path, "w") as file:
         file.write(structure + "\n")
 
 
-# INFO LOOPS NORMALE
+# INFO LOOPS
 RNAfold_out = open(random_file_name, "r")
 RNAfold_output = RNAfold_out.readlines()
 header = []
@@ -498,22 +492,30 @@ for i in range(0, len(RNAfold_output), 3):
     seq.append(RNAfold_output[i + 1].strip("\n"))
     dots_brackets1.append(RNAfold_output[i + 2])
 re_3_2 = "(\({2}\.{3,}\){2})+"
-find_loops = (re.compile(re_3_2))
+# find_loops = (re.compile(re_3_2))
 file_info_loops = f"info_loops_for_{user_file}"
 with open(file_info_loops, "w") as file_info:
     i = 0
-    for line in dots_brackets1:
-        loop = str(re.search(find_loops, line))
-        indexes = loop.split("span=")[1].split(", m")[0].replace("(", "").replace(")", "").split(",")
-        indexes_updated = [int(indexes[0])+1, int(indexes[1])-2]
-        count_real_loops = [(len(re.findall(re_3_2, line)))]
-        #count_real_loops_without_parenthesis = str(count_real_loops).replace("[", " ").replace("]", " ")
-        loop_length = indexes_updated[-1] - indexes_updated[0]
-        ind_upd_start = indexes_updated[0]
-        ind_upd_end = indexes_updated[-1]
-        len_loop = loop_length
-        file_info.write(str(header[i]) + "\t" + str(1) + "\t" + str(ind_upd_start) + "\t" + str(ind_upd_end) + "\t" + str(len_loop) + "\n")
-        i += 1
+    for d in mir_dict:
+        my_name = d[0].replace("\t", ",")
+        my_seq = d[1]
+        my_not = mir_dict[d]
+        find_loops = str(re.search(re_3_2, my_not))
+        if find_loops == 'None':
+            find_loops = find_loops
+            file_info.write(str(my_name) + "\t" + "0" + "\t" + "0" + "\t" + "0" + "\t" + "0" + "\n")
+        else:
+            indexes = find_loops.split("span=")[1].split(", m")[0].replace("(", "").replace(")", "").split(",")
+            indexes_updated = [int(indexes[0]) + 1, int(indexes[1]) - 2]
+            count_real_loops = [(len(re.findall(re_3_2, my_not)))]
+            count_real_loops_without_parenthesis = str(count_real_loops).replace("[", " ").replace("]", " ")
+            loop_length = indexes_updated[-1] - indexes_updated[0]
+            ind_upd_start = indexes_updated[0]
+            ind_upd_end = indexes_updated[-1]
+            len_loop = loop_length
+            file_info.write(str(my_name) + "\t" + str(1) + "\t" + str(ind_upd_start) + "\t" + str(ind_upd_end) + "\t" + str(
+                    len_loop) + "\n")
+    #output_file.close()
 data = []
 with open(file_info_loops, 'r') as file:
     for line in file:
@@ -618,7 +620,7 @@ with open(file_32_features, 'r') as file:
         })
 df_32 = pd.DataFrame(data2)
 df_32.set_index('Header', inplace=True)
-
+#df_32.to_csv("df_32", sep= "\t")
 
 # COUNT NUCLEOTIDES
 RNAfold_out = open(random_file_name, "r")
@@ -686,7 +688,6 @@ df_nucleotides = pd.DataFrame.from_dict(data3)
 df_nucleotides.set_index('Header', inplace=True)
 
 
-
 # BASE PAIRING
 def load_loop_info(input_file_path):
     loop_info = {}
@@ -716,19 +717,16 @@ def count_bases_before_loop_start(header, seq, dots_brackets1, loop_info):
             if loop_start is not None and loop_end is not None:
                 if loop_start <= j <= loop_end:
                     continue  # Skip bases inside the loop
-
             # Add a check to see if the base is a valid one (A, U, G, C)
             if base not in ['A', 'U', 'G', 'C']:
                 print(f"Invalid base '{base}' at position {j} for miRNA {my_name}")
                 continue  # Skip this base and continue to the next one
-
             if notation == '(' or notation == ')':
                 base_counts[base]['paired'] += 1
             elif notation == '.':
                 base_counts[base]['unpaired'] += 1
-
         mirna_counts[my_name] = base_counts
-
+    return(mirna_counts)
 
 # Example usage:
 RNAfold_out = open(random_file_name, "r")
@@ -922,7 +920,7 @@ for d in mir_dict:
 df_b = pd.DataFrame(results)
 df_b.set_index('mirna_name', inplace=True)
 df_base_features = pd.concat([df_pairs, df_b], axis=1)
-df_base_features.to_csv(f"info_base_pairing_for_{user_file}.tsv", sep="\t")
+
 
 
 
@@ -1036,11 +1034,11 @@ column_order = ['(.(', '(............(', '(...(', ')....)', ').)', ')..)', ')...
                 '(..................(', '(.....................(', ')................)',
                 'Bulges_5_prime', 'Bulges_3_prime']
 df_bulges = df[column_order]
-#df_bulges.to_csv(f"info_bulges_for_{user_file}", sep="\t", header=None)
+
 
 
 DF_TOTAL = pd.DataFrame(pd.concat([df_loops, df_32, df_nucleotides, df_base_features, df_bulges, df_energies], axis=1))
-# print(DF_TOTAL)
+
 DF_TOTAL.to_csv(f"features_table_for_{user_file}", sep="\t")
 
 
@@ -1049,7 +1047,7 @@ import os
 # Remove intermediate files
 intermediate_files = [resulting_string, file_info_loops, file_32_features, file_nucleotides_features, output_file, random_file_name]
 for file in intermediate_files:
-    try:
-        os.remove(file)
-    except FileNotFoundError:
-        pass
+   try:
+       os.remove(file)
+   except FileNotFoundError:
+       pass
